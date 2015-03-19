@@ -5,7 +5,23 @@ gem 'rails', '3.0.5'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'mysql'
+gem 'mysql2'
+#gem 'ruby-mysql'
+gem 'bcrypt-ruby', :require => "bcrypt"
+gem 'will_paginate', '3.0.pre2'
+gem 'actionmailer'
+gem 'action_mailer_tls'
+
+#group :development do
+#	gem 'rspec-rails'
+#end
+
+#group :test do
+#	gem 'rspec'
+#	gem 'webrat'
+#end
+
+
 
 # Use unicorn as the web server
 # gem 'unicorn'

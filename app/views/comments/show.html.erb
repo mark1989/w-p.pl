@@ -1,0 +1,31 @@
+<% if is_english_language %>
+  <h3><%= News.find(@comment.news_id).englishSubject %></h3><br/>
+<% else %>
+  <h3><%= News.find(@comment.news_id).polishSubject %></h3><br/>
+<% end %>
+<div class="comment">
+  <table>
+    <tr>
+      <% user = User.find(@comment.user_id) %>
+      <td>
+        <% if user.avatar? %>
+          <%= image_tag(user.avatar, :size => "64x64") %>
+        <% else %>
+          <%= image_tag("/images/UserUnknownIcon.jpg", :size => "64x64") %>
+        <% end %>
+      </td>
+      <td>
+        <b><%= @comment.subject %></b>
+        <br/><br/>
+        <%= @comment.comment.html_safe %>
+        <br/><br/>
+        <%= link_to user.username, user %> &nbsp; &nbsp;
+        <i><%= @comment.posted.to_s[0..PagesController.date_length] %></i>
+        
+      </td>
+    </tr>
+  </table>
+</div>
+<br/>
+
+

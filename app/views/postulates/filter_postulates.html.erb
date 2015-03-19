@@ -1,0 +1,26 @@
+<% if is_english_language %>
+  <%= page_navigator = will_paginate @postulates = @postulates.reverse.paginate(:page => params[:page], :per_page => PostulatesController.per_page), :previous_label => "Previous ", :next_label => " Next" %>
+<% else %>
+  <%= page_navigator = will_paginate @postulates = @postulates.reverse.paginate(:page => params[:page], :per_page => PostulatesController.per_page), :previous_label => "Wstecz ", :next_label => " Dalej" %>
+<% end %><br/>
+
+<% @postulates.each do |postulate| %>
+
+  <%  @postulate = postulate %>
+  <p id="notice"><%= notice %></p>
+
+  <p>
+    <b>Treść</b>
+    <%= @postulate.content %>
+  </p>
+
+  <p>
+    <b>Tytuł: </b>
+    <%= @postulate.commentary %>
+  </p>
+
+  <%= link_to 'Edit', edit_postulate_path(@postulate) %> 
+
+<% end %>
+
+<%= page_navigator %>
