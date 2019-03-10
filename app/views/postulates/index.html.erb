@@ -1,0 +1,29 @@
+<%= page_navigator = will_paginate @postulates = @postulates.reverse.take(PagesController.postulates_per_page_admin_panel).paginate(:page => params[:page], :per_page => PagesController.postulates_per_page_admin_panel), :previous_label => "Wstecz ", :next_label => " Dalej" %>
+<br/><br/>
+<%= link_to 'Nowy Postulat', new_postulate_path %>
+<br/><br/>
+<table>
+  <tr>    
+    <th>Tytuł <%= link_to image_tag("/images/sorting_icons/ascending.gif"), sort_postulates_path("commentary ASC")%>
+    	<%= link_to image_tag("/images/sorting_icons/descending.gif"), sort_postulates_path("commentary DESC")%> </th>
+    <th>Treść <%= link_to image_tag("/images/sorting_icons/ascending.gif"), sort_postulates_path("content ASC")%>
+    	<%= link_to image_tag("/images/sorting_icons/descending.gif"), sort_postulates_path("content DESC")%> </th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @postulates.each do |postulate| %>
+  <tr>    
+    <td><%= postulate.commentary %></td>
+    <td><%= postulate.content %></td>
+    <td><%= link_to 'Pokaż', postulate %></td>
+    <td><%= link_to 'Edytuj', edit_postulate_path(postulate) %></td>
+    <td><%= link_to 'Usuń', postulate, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+<%= page_navigator%>
+<br />
+
+

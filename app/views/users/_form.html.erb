@@ -1,0 +1,89 @@
+<% if is_english_language %>
+
+  <%= form_for(@user) do |f| %>
+    <% if @user.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+        <ul>
+          <% @user.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="field">
+      <%= f.label :username %><br />
+      <%= f.text_field :username %>
+    </div>
+    <div class="field">
+      <%= f.label :email %><br />
+      <%= f.text_field :email %>
+    </div>
+    <div class="field">
+      <%= f.label :avatar %><br />
+      <%= f.text_field :avatar %>
+    </div>
+    <div class="field">
+      <%= f.label :password %><br />
+      <%= f.password_field :password %>
+    </div>
+    <div>
+      <%= f.label :password_confirmation%><br/>
+      <%= f.password_field :password_confirmation%>
+    </div>
+    <%if is_admin_logged%>
+	  	<%= f.label "Privileges Level" %><br />
+	    <%= f.text_field :privilegesLevel %>
+  <% end%>
+    <div class="actions"><br />
+      <%= f.submit %>
+    </div>
+  <% end %>
+
+<% else %>
+
+  <%= form_for(@user) do |f| %>
+    <% if @user.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+        <ul>
+          <% @user.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="field">
+      <%= f.label "Użytkownik" %><br />
+      <%= f.text_field :username %>
+    </div>
+    <div class="field">
+      <%= f.label :email %><br />
+      <%= f.text_field :email %>
+    </div>
+    <div class="field">
+      <%= f.label "Jeśli dysponujesz kontem w serwisie gravatar podaj email dla tego konta:" %><br />
+      <%= f.text_field :avatar %>
+    </div>
+    <div class="field">
+      <%= f.label "Hasło" %><br />
+      <%= f.password_field :password %>
+    </div>
+    <div>
+      <%= f.label "Powtórz hasło" %><br/>
+      <%= f.password_field :password_confirmation%>
+    </div>
+    <%if is_admin_logged%>
+	  	<%= f.label "Poziom uprawnień" %><br />
+	    <%= f.text_field :privilegesLevel %>
+  <% end%>
+    <div class="actions"><br />
+      <%= f.submit "Zapisz"%>
+    </div>
+  <% end %>
+
+<% end %>

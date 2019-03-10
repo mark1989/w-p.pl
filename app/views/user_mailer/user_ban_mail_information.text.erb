@@ -1,0 +1,6 @@
+Witaj <%= @user.username %>,
+
+Niestety w związku z naruszeniem zasad regulaminu Twoje konto zostało zbanowane <% if @user.banned > (Date.current() + 7.days)%>na zawsze.<% else %>7 dni
+<% end %>
+
+
